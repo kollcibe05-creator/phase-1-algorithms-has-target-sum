@@ -1,5 +1,37 @@
+//method 1
+function sumTargertMatch (array, target) {
+for (let i = 0; i<array.length; i++){
+  let complement = target - array[i]
+for(let j = i + 1  ; j<array.length; j++)
+  if (array[j] === complement) return true
+}
+return false
+}
+
+
+
+//method 2 most optimized
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  let seenNumbers = {};
+  for (let i = 0; i<array.length; i++) {
+   const  complement = target - array[i];
+  
+  if (seenNumbers[complement]) return true;
+  seenNumbers[array[i]] = true
+}
+return false;
+}
+
+//more optimization
+function hasTargettSum(array, target) {
+  let seenNumbers = {};
+  for (const number in array) {
+   const  complement = target - number;
+  
+  if (complement in seenNumbers) return true;
+  seenNumbers[array[i]] = true
+}
+return false;
 }
 
 /* 
@@ -8,7 +40,13 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+  takes in an array and target
+  iterates through it at both ends 
+  sums the last iteration to the first 
+  returns true if any of the sums is equal to the target
 */
+
+
 
 /*
   Add written explanation of your solution here
